@@ -1,8 +1,8 @@
 ## vue
 
-#### 1. directive
+1. directive
 
-#### 2.
+2.
 
 ## vue-router
 
@@ -45,7 +45,7 @@ const Baz = () => import(/* webpackChunkName: "group-foo" */ './Baz.vue')
 ```
 
 4. tag
-   有时候想要 <router-link> 渲染成某种标签，例如 <li>。 于是我们使用 tag prop 类指定何种标签，同样它还是会监听点击，触发导航。
+   有时候想要 `<router-link>` 渲染成某种标签，例如 `<li>`。于是我们使用 tag prop 类指定何种标签，同样它还是会监听点击，触发导航。
 
 ```
 <router-link to="/foo" tag="li">foo</router-link>
