@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
+import Home from './components/Home.vue';
 
 Vue.use(Router);
 const router = new Router({
@@ -16,28 +16,51 @@ const router = new Router({
       component: () => import( /* webpackChunkName: "login" */ './components/login.vue'),
     },
     {
-      path: '/about',
+      path: '/register',
+      name: 'register',
+      component: () => import( /* webpackChunkName: "login" */ './components/register.vue'),
+    },
+    {
+      path: '/vue',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () =>
-        import( /* webpackChunkName: "about" */ './views/About.vue'),
-      children: [{
+      component: () => import( /* webpackChunkName: "vue" */ './views/vue/vue.vue'),
+      children: [
+        {
           path: '',
-          name: 'homeRouter1',
-          component: () =>
-            import( /* webpackChunkName: "about" */ './views/homeComponents/homeRouter1.vue')
+          name: 'directive',
+          component: () => import(/* webpackChunkName: 'vue' */ './views/vue/directive.vue'),
+        },
+        {
+          path: 'componentModel',
+          name: 'componentModel',
+          component: () => import(/* webpackChunkName: 'vue' */ './views/vue/componentModel.vue'),
+        }
+      ]
+    },
+    {
+      path: '/vue-router',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import( /* webpackChunkName: "vueRouter" */ './views/vueRouter/vueRouter.vue'),
+      children: [
+        {
+          path: '',
+          name: 'homeRouter',
+          component: () => import(/* webpackChunkName: 'vueRouter' */ './views/vueRouter/homeRouter.vue'),
         },
         {
           path: 'homeRouter2',
           name: 'homeRouter2',
-          component: () => import( /* webpackChunkName: "about" */ './views/homeComponents/homeRouter2.vue'),
+          component: () => import(/* webpackChunkName: 'vueRouter' */ './views/vueRouter/homeRouter2.vue'),
           meta: {
-            requiresAuth: true
+            requiresAuth: true,
           }
         }
       ]
-    }
+    },
   ]
 });
 
