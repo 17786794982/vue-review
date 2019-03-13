@@ -36,6 +36,16 @@ const router = new Router({
           path: 'componentModel',
           name: 'componentModel',
           component: () => import(/* webpackChunkName: 'vue' */ './views/vue/componentModel.vue'),
+        },
+        {
+          path: 'vue-slot',
+          name: 'vueSlot',
+          component: () => import(/* webpackChunkName: 'vue' */ './views/vue/vueSlot/vueSlot.vue'),
+        },
+        {
+          path: 'dynamic',
+          name: 'dynamic',
+          component: () => import(/* webpackChunkName: 'vue' */ './views/vue/dynamic/dynamic.vue'),
         }
       ]
     },
