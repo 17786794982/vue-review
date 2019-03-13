@@ -13,6 +13,9 @@
       <li>
         <router-link :to="{name: 'dynamic'}">动态组件</router-link>
       </li>
+      <li>
+        <router-link :to="{name: 'vueProps'}">props</router-link>
+      </li>
     </ul>
     <router-view></router-view>
   </div>

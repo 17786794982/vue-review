@@ -46,6 +46,11 @@ const router = new Router({
           path: 'dynamic',
           name: 'dynamic',
           component: () => import(/* webpackChunkName: 'vue' */ './views/vue/dynamic/dynamic.vue'),
+        },
+        {
+          path: 'vueProps',
+          name: 'vueProps',
+          component: () => import(/* webpackChunkName: 'vue' */ './views/vue/vueProps.vue'),
         }
       ]
     },
