@@ -1,4 +1,4 @@
 module.exports = {
-  publickPath: '/',
+  publicPath: '/',
   productionSourceMap: false,
-}
+};

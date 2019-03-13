@@ -12,7 +12,6 @@ import './noData.less';
 // 在 bind 和 update 时触发相同行为
 Vue.directive('nodata', (el, binding) => {
   let value = binding.value;
-  console.log(el.classList);
   if (value) {
     el.classList.add('no-data');
   } else {
