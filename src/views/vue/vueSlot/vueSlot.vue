@@ -2,8 +2,9 @@
   <div>
     <h2>slot 插槽</h2>
     <alertBox>
-      Something bad happened.
+      Something bad happened. {{msg}}
     </alertBox>
+    <strong>父级模板里的所有内容都是在父级作用域中编译的；子模板里的所有内容都是在子作用域中编译的。</strong>
   </div>
 </template>
 
@@ -12,6 +13,11 @@
   
   export default {
     name: "vueSlot",
+    data(){
+      return {
+        msg: 'abc',
+      }
+    },
     components: {
       alertBox,
     }

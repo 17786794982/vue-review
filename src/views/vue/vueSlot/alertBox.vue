@@ -7,7 +7,12 @@
 
 <script>
   export default {
-    name: "alertBox"
+    name: "alertBox",
+    data() {
+      return {
+        msg: 'bcd',
+      }
+    }
   }
 </script>
 
