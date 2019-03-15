@@ -3,7 +3,7 @@
     <h2>home-router1</h2>
     <div class="big-wrapper">
       <button @click="hasData = !hasData">{{hasData}}</button>
-      <div v-nodata="hasData" class="has-data-wrapper">{{hasData}}</div>
+      <div v-nodata="hasData" data-empty-text="暂无数据，敬请期待！" class="has-data-wrapper">{{hasData}}</div>
     </div>
   </div>
 </template>
