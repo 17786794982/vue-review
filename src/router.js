@@ -51,7 +51,12 @@ const router = new Router({
           path: 'vueProps',
           name: 'vueProps',
           component: () => import(/* webpackChunkName: 'vue' */ './views/vue/vueProps.vue'),
-        }
+        },
+        {
+          path: 'sync',
+          name: 'sync',
+          component: () => import(/* webpackChunkName: 'vue' */ './views/vue/sync/index.vue'),
+        },
       ]
     },
     {

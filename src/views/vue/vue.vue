@@ -16,6 +16,9 @@
       <li>
         <router-link :to="{name: 'vueProps'}">props</router-link>
       </li>
+      <li>
+        <router-link :to="{name: 'sync'}">sync</router-link>
+      </li>
     </ul>
     <router-view></router-view>
   </div>
