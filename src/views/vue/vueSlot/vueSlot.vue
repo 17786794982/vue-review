@@ -1,25 +1,36 @@
 <template>
   <div>
     <h2>slot 插槽</h2>
-    <alertBox>
-      Something bad happened. {{msg}}
-    </alertBox>
-    <strong>父级模板里的所有内容都是在父级作用域中编译的；子模板里的所有内容都是在子作用域中编译的。</strong>
+    <jumingchacao>
+      <template v-slot:title>1、编译作用域</template>
+      <bianyizuoyongyu></bianyizuoyongyu>
+    </jumingchacao>
+    <jumingchacao>
+      <template v-slot:title>2、后背内容</template>
+      <houbeineirong></houbeineirong>
+    </jumingchacao>
+    <jumingchacao>
+      <template v-slot:title>3、具名插槽</template>
+      <p>注意 v-slot 只能添加在一个 &lt;template&gt; 上 (只有一种例外情况)</p>
+    </jumingchacao>
   </div>
 </template>
 
 <script>
-  import alertBox from './alertBox'
+  import jumingchacao from './jumingchacao'
+  import bianyizuoyongyu from './bianyizuoyongyu'
+  import houbeineirong from './houbeineirong'
   
   export default {
     name: "vueSlot",
     data(){
       return {
-        msg: 'abc',
       }
     },
     components: {
-      alertBox,
+      jumingchacao,
+      bianyizuoyongyu,
+      houbeineirong,
     }
   }
 </script>

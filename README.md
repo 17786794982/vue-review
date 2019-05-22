@@ -1,3 +1,18 @@
+## vue-cli3
+1. Compiles and hot-reloads for development
+```
+npm run serve
+npm run serve:test 启动可以将baseURL设置成测试环境的地址
+npm run serve:prod 启动可以将baseURL设置成生产环境的地址
+```
+
+2. Compiles and minifies for production
+```
+npm run build
+npm run build:dev 可以将打包的baseURL设置成开发环境的地址
+npm run build:test 可以将打包的baseURL设置成测试环境的地址
+```
+
 ## vue
 
 1. directive

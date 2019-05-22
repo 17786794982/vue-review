@@ -1,7 +1,7 @@
 <template>
   <div>
     <strong>Error!</strong>
-    <slot></slot>
+    <slot>this is init message!</slot>
   </div>
 </template>
 
