@@ -67,3 +67,132 @@ const Baz = () => import(/* webpackChunkName: "group-foo" */ './Baz.vue')
 <!-- 渲染结果 -->
 <li>foo</li>
 ```
+
+## vuex
+[![vuex](/public/img/vuex.png "vuex")](/vuex)
+1. state
+   - 在Vue组件中获取state: 在计算 **计算属性** 中返回。
+      - 简单写法：
+      ```
+      computed: {
+        count(){
+          return this.$store.state.count;
+        }
+      }
+      ```
+      - mapState 辅助函数
+      ```
+      import {mapState} from 'vuex';
+      // ...
+      computed(){
+        ...mapState({
+          count: state => state.count,
+          count1: 'count1',
+        })
+        // 或者
+        // ...mapState([
+        //  'count', 'count1'
+        // ])
+      }
+      ```
+2. getters
+   - getter的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了变化才会被重新计算。
+   
+   ```
+   import { mapGetters } from 'vuex'
+    export default {
+    // ...
+      computed: {
+      // 使用对象展开运算符将 getter 混入 computed 对象中
+        ...mapGetters([
+          'doneTodosCount',
+          'anotherGetter',
+          // ...
+        ])
+      }
+    }
+   ```
+
+3. mutation
+   - 更改vuex的store中的状态的唯一方法是提交 mutation。
+   不能直接调用mutation，需要commit，如`this.$store.commit('INCREMENT')`
+   - 推荐使用常量替代mutation的事件类型。
+   - mutation必须是同步函数。
+   - 可使用mapMutations
+
+   ```
+    methods: {
+      ...mapMutations([
+        // 将 this.increment() 映射为 this.$store.commit('increment')
+        'increment', 
+        // 将 this.incrementBy(amount) 映射为 this.$store.commit('incrementBy', amount)
+        'incrementBy',
+      ])
+    }
+   ```
+
+4. action
+   - action 提交的是 mutation，而不是直接修改状态；
+   - action 可以包含任意异步操作。
+   简单的action:
+   ```
+    actions: {
+      // 接受一个与store实例具有相同方法和属性的context对象
+      increment (context) {
+        context.commit('increment')
+      }
+    }
+   ```
+
+   - 分发 action：
+   ` this.$store.dispatch('increment') `
+   或者使用 mapActions 辅助函数：
+   ```
+    import {mapActions} from 'vuex';
+    // ....
+    methods: {
+      ...mapActions([
+        'increment', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
+        'incrementBy', // 将 `this.incrementBy(amount)` 映射为 `this.$store.dispatch('incrementBy', amount)`
+      ])
+    }
+
+   ```
+   处理异步：
+   ```
+    actions: {
+      actionA ({ commit }) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            commit('someMutation')
+            resolve()
+          }, 1000)
+        })
+      }
+    }
+   ```
+5. Module
+```
+  const moduleA = {
+    state: { ... },
+    mutations: { ... },
+    actions: { ... },
+    getters: { ... }
+  }
+
+  const moduleB = {
+    state: { ... },
+    mutations: { ... },
+    actions: { ... }
+  }
+
+  const store = new Vuex.Store({
+    modules: {
+      moduleA,
+      moduleB,
+    }
+  })
+
+  store.state.moduleA // -> moduleA 的状态
+  store.state.moduleA // -> moduleB 的状态
+```
